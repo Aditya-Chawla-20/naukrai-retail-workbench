@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "id": "west-retail",
+      "datasets": ["samples/orders.csv", "samples/products.csv"],
+      "chat_questions": [
+        {"question": "Only stores in the West region", "expected": {"status": "ok", "row_count_considered": 4}},
+        {"question": "Among those, which categories had the highest return rate?", "expected": {"status": "ok", "preview": [{"category": "Apparel", "return_rate": 0.6}], "operation": "return_rate", "row_count_considered": 4}},
+        {"question": "Among those, which status has the most records?", "expected": {"status": "ok", "preview": [{"status": "Completed", "count": 3}], "operation": "count", "row_count_considered": 4}},
+        {"question": "What was the weather on our best sales day?", "expected": {"status": "refuse"}},
+        {"question": "Which store is best?", "expected": {"status": "clarify"}}
+      ]
+    },
+    {"id": "isolated-malformed-file", "datasets": ["samples/malformed.csv"]},
+    {
+      "id": "duplicate-key",
+      "datasets": ["samples/orders.csv", {"path": "samples/products_duplicate.csv", "role": "products"}],
+      "chat_questions": [
+        {"question": "Show total revenue by category", "expected": {"status": "rejected", "error_code": "unsafe_join"}}
+      ]
+    }
+  ]
+}
