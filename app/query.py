@@ -159,7 +159,7 @@ def run_query(db, run, plan):
     if plan.intent == "scope":
         if plan.metrics or plan.fields or plan.group_by or plan.sort or not plan.filters:
             raise Problem("invalid_plan", "A scope turn requires filters and cannot project or aggregate rows.")
-        return [], evidence(run, table, used, plan, join_evidence, considered, 0, [], {})
+        return [], evidence(run, table, used, plan, join_evidence, considered, 0, ["filter"], {})
     aggregating = plan.intent in ("aggregate", "compare")
     if aggregating and (not plan.metrics or plan.fields):
         raise Problem("invalid_plan", "Aggregation requires metrics and optional group fields.")

@@ -166,10 +166,14 @@ def create_app(root=None, access_token=None):
                             media_type="application/octet-stream")
 
     @api.post("/api/runs/{run_id}/chat", openapi_extra={"requestBody": {
-        "required": True, "content": {"application/json": {"schema": ChatRequest.model_json_schema()}}
+        "required": True, "content": {"application/json": {"schema": {
+            "type": "object", "required": ["question"],
+            "properties": {"question": {"type": "string", "maxLength": 1500},
+                           "session_id": {"type": "string"}, "plan": {"type": "object"}},
+        }}}
     }})
     async def chat(request: Request, run_id: str):
-        if not request.headers.get("Content-Type", "").lower().split(";")[0] == "application/json":
+        if request.headers.get("Content-Type", "").lower().split(";")[0].strip() != "application/json":
             raise Problem("invalid_request", "Send chat requests as application/json.", 415)
         chunks = bytearray()
         async for chunk in request.stream():
