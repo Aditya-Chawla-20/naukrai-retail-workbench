@@ -1,0 +1,8 @@
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+.workbench/
+evaluation_output/
+results.json
+.DS_Store
