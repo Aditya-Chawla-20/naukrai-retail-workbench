@@ -20,6 +20,8 @@ Open [the workbench](http://127.0.0.1:8000) or [the API reference](http://127.0.
 
 The second answer is Apparel at 60% (3 returned / 5 sold). The third is Completed with 3 order lines. Expand the evidence to inspect the selected data version, inherited filter, validated join, row count and metric components. Try `Which store is best?` for clarification. Upload `samples/orders.csv` and `samples/products_duplicate.csv` together and set upload metadata to `{"products_duplicate.csv":{"role":"products"}}` to reproduce a rejected join with `Show total revenue by category`.
 
+[Watch the 3:37 walkthrough](walkthrough.mp4), made from captures of the running application with local synthesized narration. It shows the cleaning run, unresolved date, ambiguous chat question, retail join, multi-turn evidence, and malformed-file recovery.
+
 ## Headless evaluation
 
 ```sh

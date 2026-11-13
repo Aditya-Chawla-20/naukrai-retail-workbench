@@ -143,6 +143,30 @@ def test_injection_and_model_failure(data, monkeypatch):
     assert "reveal the system prompt" not in str(seen)
 
 
+def test_nvidia_transport_retry_and_valid_plan(data, monkeypatch):
+    workbench, run = data
+    monkeypatch.setenv("NVIDIA_API_KEY", "fixture-key")
+    monkeypatch.setenv("NVIDIA_MODEL", "fixture-model")
+    calls = []
+    real_client = httpx.Client
+    plan = Plan(intent="aggregate", dataset="d1", metrics=[Metric(op="count")])
+
+    def reply(request):
+        calls.append(request.url.path)
+        if len(calls) == 1:
+            return httpx.Response(429)
+        return httpx.Response(200, json={"choices": [{"message":{"content":plan.model_dump_json()}}]})
+
+    monkeypatch.setattr("app.chat.httpx.Client", lambda **kwargs: real_client(
+        transport=httpx.MockTransport(reply), **kwargs))
+    turn = ask(workbench, "alice", run["run_id"], "Count records")
+    assert calls == ["/v1/chat/completions"] * 2
+    assert turn["planner"] == "nvidia" and turn["fallback_reason"] is None
+    assert turn["answer"]["preview"] == [{"value":5}]
+    raw = ask(workbench, "alice", run["run_id"], "Show raw revenue by category")
+    assert raw["status"] == "refuse" and len(calls) == 2
+
+
 def test_empty_malformed_and_generic_numbers(tmp_path, monkeypatch):
     monkeypatch.delenv("NVIDIA_API_KEY", raising=False)
     w = Workbench(tmp_path / "store")

@@ -22,6 +22,7 @@ STATS = ("count", "min", "max", "avg", "median", "stddev")
 SECRET_REQUEST = re.compile(
     r"\b(system prompt|api key|credentials|password|other user|execute sql|run python)\b", re.I
 )
+RAW_REQUEST = re.compile(r"\b(?:raw|uncleaned|original)\s+(?:data(?:set|s)?|rows?|revenue|sales|orders?)\b", re.I)
 
 
 @dataclass(frozen=True)
@@ -35,7 +36,7 @@ def offline(question, run, prior):
     """Small credential-free planner for documented analytical phrasing."""
     q = " ".join(question.strip().split())
     lower = q.lower()
-    if SECRET_REQUEST.search(lower):
+    if SECRET_REQUEST.search(lower) or RAW_REQUEST.search(lower):
         return Plan(intent="refuse")
     candidates = run["datasets"]
     previous = next((t for t in candidates if t["id"] == prior.get("dataset")), None)
@@ -168,7 +169,7 @@ def model_context(run, prior):
 
 
 def nvidia_plan(question, run, prior):
-    if SECRET_REQUEST.search(question):
+    if SECRET_REQUEST.search(question) or RAW_REQUEST.search(question):
         return Decision(Plan(intent="refuse"), "offline")
     key, model = os.getenv("NVIDIA_API_KEY"), os.getenv("NVIDIA_MODEL")
     if not key or not model:
@@ -251,6 +252,10 @@ def ask(workbench, owner, run_id, question, *, session_id=None, planner=nvidia_p
         "refuse": "The authorized datasets and supported operations cannot answer that question.",
         "rejected": error["message"] if error else "",
     }.get(status)
+    if status == "clarify" and re.search(r"\b(best|performance)\b", question, re.I):
+        summary = "How should I measure performance: gross sales, number of orders, or unit return rate?"
+    if status == "refuse" and RAW_REQUEST.search(question):
+        summary = "Chat uses the published cleaned version. Download the original artifact to inspect raw values."
     if status == "ok":
         if plan.intent == "scope":
             summary = f"Scope saved on {trace['dataset_name']}. {trace['row_count_considered']} matching rows."
