@@ -146,19 +146,23 @@ def test_injection_and_model_failure(data, monkeypatch):
 def test_nvidia_transport_retry_and_valid_plan(data, monkeypatch):
     workbench, run = data
     monkeypatch.setenv("NVIDIA_API_KEY", "fixture-key")
-    monkeypatch.setenv("NVIDIA_MODEL", "fixture-model")
+    monkeypatch.setenv("NVIDIA_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
     calls = []
     real_client = httpx.Client
     plan = Plan(intent="aggregate", dataset="d1", metrics=[Metric(op="count")])
 
     def reply(request):
         calls.append(request.url.path)
+        assert json.loads(request.content)["chat_template_kwargs"] == {"enable_thinking": False}
         if len(calls) == 1:
             return httpx.Response(429)
-        return httpx.Response(200, json={"choices": [{"message":{"content":plan.model_dump_json()}}]})
+        return httpx.Response(200, json={"choices": [{"message":{
+            "content":"```json\n" + plan.model_dump_json() + "\n```"}}]})
 
     monkeypatch.setattr("app.chat.httpx.Client", lambda **kwargs: real_client(
         transport=httpx.MockTransport(reply), **kwargs))
+    scope = ask(workbench, "alice", run["run_id"], "Only stores in the West region")
+    assert scope["trace"]["row_count_considered"] == 4 and calls == []
     turn = ask(workbench, "alice", run["run_id"], "Count records")
     assert calls == ["/v1/chat/completions"] * 2
     assert turn["planner"] == "nvidia" and turn["fallback_reason"] is None
