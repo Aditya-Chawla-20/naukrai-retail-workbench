@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Retail Data Workbench</title>
+<style>
+:root{color-scheme:light;--paper:#f7f3e8;--ink:#202b23;--green:#153e32;--lime:#d9ed9d;--line:#c6cbb9;--muted:#515d50;--error:#892d23}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+header{background:var(--green);color:white;padding:1rem max(5vw,1rem)}
+header nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;max-width:1240px;margin:auto}
+a{color:inherit;text-underline-offset:.22em}
+header a{color:var(--lime);font-size:.88rem}
+main{width:min(1240px,calc(100% - 10vw));margin:0 auto 3rem}
+h1,h2,h3{font-family:Georgia,serif;font-weight:400;line-height:1.05;margin:0}
+h1{font-size:clamp(2.55rem,6.5vw,5rem);letter-spacing:-.035em}
+h2{font-size:1.85rem}
+h3{font-size:1.3rem}
+p{margin:.55rem 0 .9rem}
+.intro{padding:2.2rem 0 1.7rem;border-bottom:1px solid var(--line)}
+.intro p{max-width:65ch;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(16rem,1fr) minmax(0,1.65fr);gap:clamp(1.5rem,5vw,5rem);margin-top:1.6rem}
+section,aside{min-width:0}
+form{margin:1rem 0}
+label{display:block;font-weight:600;font-size:.88rem;margin-bottom:.35rem}
+input,textarea,button,select{font:inherit}
+input,textarea,select{width:100%;min-width:0;padding:.55rem .65rem;border:1px solid #878d7e;border-radius:3px;background:#fffcf5;color:var(--ink)}
+input[type=file]{margin-bottom:.5rem}
+textarea{resize:vertical}
+button{cursor:pointer;background:var(--green);color:#fff;border:1px solid var(--green);padding:.5rem .8rem;border-radius:3px}
+button.secondary{background:transparent;color:var(--green)}
+button:hover:not(:disabled){background:#275645;color:white}
+button:disabled{opacity:.55;cursor:default}
+:focus-visible{outline:3px solid #a55321;outline-offset:3px}
+::selection{background:var(--lime);color:var(--green)}
+.actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.55rem}
+.run-picker{margin-top:1.2rem}
+.datasets{margin-top:1.2rem}
+details{border-top:1px solid var(--line);padding:.55rem 0}
+summary{cursor:pointer;font-weight:650;overflow-wrap:anywhere}
+pre{max-width:100%;max-height:28rem;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#e8e9db;padding:.8rem;font-size:.79rem}
+.evidence{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.35rem .8rem;font-size:.88rem}
+.evidence dt{font-weight:650}.evidence dd{margin:0}
+.error{color:var(--error);font-weight:600}
+.muted{color:var(--muted);font-size:.9rem}
+.turn{border-top:1px solid var(--line);padding:1rem 0;overflow-wrap:anywhere}
+.turn .question{font-weight:650;margin-top:0}
+.answer{padding:.65rem .85rem;background:#edf2dc}
+.table-scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;text-align:left;margin:.5rem 0;font-size:.89rem}
+th,td{padding:.42rem;border-bottom:1px solid #afb6a3;vertical-align:top}
+th{font-weight:650}
+.status{min-height:1.35em}
+[data-state="loading"]{color:var(--green)}
+[hidden]{display:none!important}
+@media(max-width:750px){.layout{display:block}.chat{margin-top:1.5rem;border-top:1px solid var(--line);padding-top:1.3rem}}
+</style>
+<script src="/ui.js" defer></script>
+</head>
+<body>
+<header><nav><strong>Retail Data Workbench</strong><a href="/docs">API reference</a></nav></header>
+<main>
+<div class="intro"><h1>Retail analytics with evidence</h1><p>Upload retail CSVs, inspect cleaning decisions, and ask questions over the published dataset version.</p></div>
+<div class="layout">
+<aside aria-labelledby="data-title">
+<h2 id="data-title">Data runs</h2>
+<form id="upload">
+<label for="files">CSV files</label><input type="file" id="files" accept=".csv,text/csv" multiple>
+<p class="muted">Up to 5 CSVs and 32 MiB total. Use <code>orders.csv</code> and <code>products.csv</code> for automatic retail field mapping.</p>
+<details><summary>Upload settings</summary><label for="metadata">Roles, field mappings and encodings (JSON)</label><textarea id="metadata" rows="3" placeholder='{"catalog.csv":{"role":"products","mapping":{"sku":"Product Code"}}}'></textarea></details>
+<div class="actions"><button id="clean" type="submit">Profile and clean</button><button id="sample" class="secondary" type="button">Try sample data</button></div>
+</form>
+<p id="upload-status" class="status" role="status"></p>
+<section id="access" hidden><label for="access-token">Workspace access token</label><input id="access-token" type="password" autocomplete="off"><div class="actions"><button id="unlock">Connect</button></div></section>
+<div class="run-picker"><label for="runs">Run history</label><select id="runs"><option value="">Choose a run</option></select></div>
+<div id="datasets" class="datasets"></div>
+</aside>
+<section class="chat" aria-labelledby="chat-title">
+<h2 id="chat-title">Ask the data</h2>
+<p class="muted" id="chat-help">Load a cleaned run to start. Follow-ups can reuse the previous turn’s filters.</p>
+<form id="chat">
+<label for="question">Question</label><textarea id="question" rows="2" maxlength="1500" required placeholder="Show total revenue by category"></textarea>
+<div class="actions"><button id="ask" type="submit" disabled>Ask</button><button id="new-chat" class="secondary" type="button" disabled>New conversation</button></div>
+</form>
+<p id="chat-status" class="status" role="status"></p>
+<div id="turns" aria-label="Conversation"></div>
+</section>
+</div>
+</main>
+</body>
+</html>
