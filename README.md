@@ -81,3 +81,7 @@ The hosted planner receives the user question, cleaned header names, role/field 
 - [AI E-commerce Analytics query compiler](https://github.com/Monokayser/ai-ecommerce-analytics/blob/7afb0be/src/data/query_engine.py) informed the typed compiler and bounded execution pattern.
 - [Retail Intelligence Platform invariants](https://github.com/S-Harshni/Retail-Intelligence-Platform/blob/9138da0/sql/quality_checks.sql) informed join cardinality checks and exact-answer tests.
 - The implementation and synthetic fixtures in this repository were written for this assessment.
+
+## Submission evidence
+
+[Open the submission report](submission-report.html) locally in a browser for the complete presentation. The [spec folder](spec/) includes the [requirement matrix](spec/requirements.md), [approach and trade-offs](spec/approach.md), [implementation log](spec/log.md) and [evaluation with saved outputs](spec/evals.md).

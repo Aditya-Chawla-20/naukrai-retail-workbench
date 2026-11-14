@@ -1,0 +1,2215 @@
+[
+  {
+    "case_id": "west-retail",
+    "status": "ok",
+    "dataset": {
+      "version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+      "files": [
+        {
+          "id": "d1",
+          "name": "orders.csv",
+          "role": "orders",
+          "version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "sha256": "6e4cddc887dc0d8b808a87cdbc647c2ec8a94de406512cbf6cbe631f6b901523",
+          "mapping": {
+            "sku": "sku",
+            "region": "region",
+            "units": "units",
+            "returned_units": "returned_units",
+            "unit_price": "unit_price",
+            "order_date": "order_date",
+            "order_id": "order_id",
+            "line_id": "line_id"
+          }
+        },
+        {
+          "id": "d2",
+          "name": "products.csv",
+          "role": "products",
+          "version": "0a6b4838673f66533fbd0614a83319e8de0d19cd57afb3d3e0bac04c099e0c0a",
+          "sha256": "9ffa04edd8dfdd773c3878beff602e67a855f6b8ef2e3b2285f7e32dea8293bb",
+          "mapping": {
+            "sku": "sku",
+            "category": "category"
+          }
+        }
+      ]
+    },
+    "profile_before": {
+      "d1": {
+        "row_count": 5,
+        "column_count": 9,
+        "duplicate_rows": 0,
+        "columns": {
+          "line_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "order_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "region": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 1,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              1,
+              1
+            ]
+          },
+          "units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 2,
+            "max": 10,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "unit_price": {
+            "physical_type": "VARCHAR",
+            "logical_type": "money",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": "50.0000",
+            "max": "100.0000",
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "returned_units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 0,
+            "max": 2,
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "order_date": {
+            "physical_type": "VARCHAR",
+            "logical_type": "date",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 1,
+            "min": "2025-01-01",
+            "max": "2025-01-05",
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "status": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "d2": {
+        "row_count": 2,
+        "column_count": 3,
+        "duplicate_rows": 0,
+        "columns": {
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "category": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 1,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "product_name": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "issues": [
+      {
+        "dataset": "d1",
+        "id": "f9c1a4b2318d8ace",
+        "code": "outer_whitespace",
+        "field": "region",
+        "count": 1,
+        "status": "addressed"
+      },
+      {
+        "dataset": "d1",
+        "id": "9ce83131c056fbfe",
+        "code": "ambiguous_or_invalid_type",
+        "field": "order_date",
+        "count": 1,
+        "status": "unresolved"
+      },
+      {
+        "dataset": "d2",
+        "id": "0a79c5f660388e04",
+        "code": "outer_whitespace",
+        "field": "category",
+        "count": 1,
+        "status": "addressed"
+      }
+    ],
+    "cleaning_plan": [
+      {
+        "dataset": "d1",
+        "id": "647349dcfdb3cb50",
+        "fields": [
+          "region"
+        ],
+        "risk": "low",
+        "op": "trim_outer_whitespace",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 1,
+        "status": "applied"
+      },
+      {
+        "dataset": "d1",
+        "id": "0efe15992e74cf6a",
+        "fields": [
+          "unit_price"
+        ],
+        "risk": "medium",
+        "op": "normalize_declared_type",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 5,
+        "status": "applied"
+      },
+      {
+        "dataset": "d2",
+        "id": "dc859197c6a380f5",
+        "fields": [
+          "category"
+        ],
+        "risk": "low",
+        "op": "trim_outer_whitespace",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 1,
+        "status": "applied"
+      }
+    ],
+    "profile_after": {
+      "d1": {
+        "row_count": 5,
+        "column_count": 9,
+        "duplicate_rows": 0,
+        "columns": {
+          "line_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "order_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "region": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          },
+          "units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 2,
+            "max": 10,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "unit_price": {
+            "physical_type": "VARCHAR",
+            "logical_type": "money",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": "50.0000",
+            "max": "100.0000",
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "returned_units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 0,
+            "max": 2,
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "order_date": {
+            "physical_type": "VARCHAR",
+            "logical_type": "date",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 1,
+            "min": "2025-01-01",
+            "max": "2025-01-05",
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "status": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "d2": {
+        "row_count": 2,
+        "column_count": 3,
+        "duplicate_rows": 0,
+        "columns": {
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "category": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "product_name": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "validation": {
+      "d1": {
+        "row_delta": 0,
+        "schema_unchanged": true,
+        "unresolved_issue_ids": [
+          "9ce83131c056fbfe"
+        ]
+      },
+      "d2": {
+        "row_delta": 0,
+        "schema_unchanged": true,
+        "unresolved_issue_ids": []
+      }
+    },
+    "chat_evaluation": [
+      {
+        "question": "Only stores in the West region",
+        "status": "ok",
+        "plan": {
+          "intent": "scope",
+          "dataset": "d1",
+          "join": null,
+          "filters": [
+            {
+              "field": "region",
+              "op": "eq",
+              "value": "West"
+            }
+          ],
+          "context": "extend",
+          "group_by": [],
+          "fields": [],
+          "metrics": [],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "Scope saved on orders.csv. 4 matching rows.",
+          "preview": []
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.region"
+          ],
+          "filters": [
+            {
+              "field": "region",
+              "op": "eq",
+              "value": "West"
+            }
+          ],
+          "joins": [],
+          "operations": [
+            "filter"
+          ],
+          "row_count_considered": 4,
+          "preview_rows": 0,
+          "eligible_rows_by_metric": {}
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Among those, which categories had the highest return rate?",
+        "status": "ok",
+        "plan": {
+          "intent": "aggregate",
+          "dataset": "d1",
+          "join": "d2",
+          "filters": [
+            {
+              "field": "region",
+              "op": "eq",
+              "value": "West"
+            }
+          ],
+          "context": "extend",
+          "group_by": [
+            "category"
+          ],
+          "fields": [],
+          "metrics": [
+            {
+              "op": "return_rate",
+              "field": null,
+              "as_": "return_rate"
+            }
+          ],
+          "sort": [
+            {
+              "field": "return_rate",
+              "direction": "desc"
+            }
+          ],
+          "limit": 1
+        },
+        "answer": {
+          "summary": "category: Apparel · Unit return rate: 60.00% (3 returned / 5 sold)",
+          "preview": [
+            {
+              "category": "Apparel",
+              "return_rate": 0.6
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.region",
+            "orders.csv.returned_units",
+            "orders.csv.sku",
+            "orders.csv.units",
+            "products.csv.category",
+            "products.csv.sku"
+          ],
+          "filters": [
+            {
+              "field": "region",
+              "op": "eq",
+              "value": "West"
+            }
+          ],
+          "joins": [
+            {
+              "dataset": "d2",
+              "version": "0a6b4838673f66533fbd0614a83319e8de0d19cd57afb3d3e0bac04c099e0c0a",
+              "type": "left",
+              "cardinality": "many_to_one",
+              "left_key": "sku",
+              "right_key": "sku",
+              "fact_rows": 5,
+              "joined_rows": 5,
+              "unmatched_fact_rows": 0,
+              "missing_fact_keys": 0,
+              "scoped_unmatched_rows": 0
+            }
+          ],
+          "operations": [
+            "left_join",
+            "filter",
+            "return_rate",
+            "aggregate",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 4,
+          "preview_rows": 1,
+          "eligible_rows_by_metric": {
+            "return_rate": 4
+          },
+          "truncated": true,
+          "metric_components": [
+            {
+              "category": "Apparel",
+              "return_rate_returned": 3,
+              "return_rate_sold": 5
+            }
+          ],
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Among those, which status has the most records?",
+        "status": "ok",
+        "plan": {
+          "intent": "aggregate",
+          "dataset": "d1",
+          "join": null,
+          "filters": [
+            {
+              "field": "region",
+              "op": "eq",
+              "value": "West"
+            }
+          ],
+          "context": "extend",
+          "group_by": [
+            "status"
+          ],
+          "fields": [],
+          "metrics": [
+            {
+              "op": "count",
+              "field": null,
+              "as_": "count"
+            }
+          ],
+          "sort": [
+            {
+              "field": "count",
+              "direction": "desc"
+            }
+          ],
+          "limit": 1
+        },
+        "answer": {
+          "summary": "status: Completed · count: 3",
+          "preview": [
+            {
+              "status": "Completed",
+              "count": 3
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.region",
+            "orders.csv.status"
+          ],
+          "filters": [
+            {
+              "field": "region",
+              "op": "eq",
+              "value": "West"
+            }
+          ],
+          "joins": [],
+          "operations": [
+            "filter",
+            "count",
+            "aggregate",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 4,
+          "preview_rows": 1,
+          "eligible_rows_by_metric": {
+            "count": 4
+          },
+          "truncated": true,
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "What was the weather on our best sales day?",
+        "status": "refuse",
+        "plan": {
+          "intent": "refuse",
+          "dataset": null,
+          "join": null,
+          "filters": [],
+          "context": "replace",
+          "group_by": [],
+          "fields": [],
+          "metrics": [],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "The authorized datasets and supported operations cannot answer that question.",
+          "preview": []
+        },
+        "trace": null,
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Which store is best?",
+        "status": "clarify",
+        "plan": {
+          "intent": "clarify",
+          "dataset": null,
+          "join": null,
+          "filters": [],
+          "context": "replace",
+          "group_by": [],
+          "fields": [],
+          "metrics": [],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "How should I measure performance: gross sales, number of orders, or unit return rate?",
+          "preview": []
+        },
+        "trace": null,
+        "planner": "offline",
+        "fallback_reason": null
+      }
+    ],
+    "artifacts": {
+      "d1": {
+        "original": "artifacts/west-retail/d1/original.csv",
+        "cleaned": "artifacts/west-retail/d1/cleaned.csv"
+      },
+      "d2": {
+        "original": "artifacts/west-retail/d2/original.csv",
+        "cleaned": "artifacts/west-retail/d2/cleaned.csv"
+      },
+      "report": "artifacts/west-retail/report.json"
+    }
+  },
+  {
+    "case_id": "query-operations",
+    "status": "ok",
+    "dataset": {
+      "version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+      "files": [
+        {
+          "id": "d1",
+          "name": "orders.csv",
+          "role": "orders",
+          "version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "sha256": "6e4cddc887dc0d8b808a87cdbc647c2ec8a94de406512cbf6cbe631f6b901523",
+          "mapping": {
+            "sku": "sku",
+            "region": "region",
+            "units": "units",
+            "returned_units": "returned_units",
+            "unit_price": "unit_price",
+            "order_date": "order_date",
+            "order_id": "order_id",
+            "line_id": "line_id"
+          }
+        },
+        {
+          "id": "d2",
+          "name": "products.csv",
+          "role": "products",
+          "version": "0a6b4838673f66533fbd0614a83319e8de0d19cd57afb3d3e0bac04c099e0c0a",
+          "sha256": "9ffa04edd8dfdd773c3878beff602e67a855f6b8ef2e3b2285f7e32dea8293bb",
+          "mapping": {
+            "sku": "sku",
+            "category": "category"
+          }
+        }
+      ]
+    },
+    "profile_before": {
+      "d1": {
+        "row_count": 5,
+        "column_count": 9,
+        "duplicate_rows": 0,
+        "columns": {
+          "line_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "order_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "region": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 1,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              1,
+              1
+            ]
+          },
+          "units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 2,
+            "max": 10,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "unit_price": {
+            "physical_type": "VARCHAR",
+            "logical_type": "money",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": "50.0000",
+            "max": "100.0000",
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "returned_units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 0,
+            "max": 2,
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "order_date": {
+            "physical_type": "VARCHAR",
+            "logical_type": "date",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 1,
+            "min": "2025-01-01",
+            "max": "2025-01-05",
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "status": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "d2": {
+        "row_count": 2,
+        "column_count": 3,
+        "duplicate_rows": 0,
+        "columns": {
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "category": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 1,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "product_name": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "issues": [
+      {
+        "dataset": "d1",
+        "id": "f9c1a4b2318d8ace",
+        "code": "outer_whitespace",
+        "field": "region",
+        "count": 1,
+        "status": "addressed"
+      },
+      {
+        "dataset": "d1",
+        "id": "9ce83131c056fbfe",
+        "code": "ambiguous_or_invalid_type",
+        "field": "order_date",
+        "count": 1,
+        "status": "unresolved"
+      },
+      {
+        "dataset": "d2",
+        "id": "0a79c5f660388e04",
+        "code": "outer_whitespace",
+        "field": "category",
+        "count": 1,
+        "status": "addressed"
+      }
+    ],
+    "cleaning_plan": [
+      {
+        "dataset": "d1",
+        "id": "647349dcfdb3cb50",
+        "fields": [
+          "region"
+        ],
+        "risk": "low",
+        "op": "trim_outer_whitespace",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 1,
+        "status": "applied"
+      },
+      {
+        "dataset": "d1",
+        "id": "0efe15992e74cf6a",
+        "fields": [
+          "unit_price"
+        ],
+        "risk": "medium",
+        "op": "normalize_declared_type",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 5,
+        "status": "applied"
+      },
+      {
+        "dataset": "d2",
+        "id": "dc859197c6a380f5",
+        "fields": [
+          "category"
+        ],
+        "risk": "low",
+        "op": "trim_outer_whitespace",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 1,
+        "status": "applied"
+      }
+    ],
+    "profile_after": {
+      "d1": {
+        "row_count": 5,
+        "column_count": 9,
+        "duplicate_rows": 0,
+        "columns": {
+          "line_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "order_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "region": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          },
+          "units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 2,
+            "max": 10,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "unit_price": {
+            "physical_type": "VARCHAR",
+            "logical_type": "money",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": "50.0000",
+            "max": "100.0000",
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "returned_units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 0,
+            "max": 2,
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "order_date": {
+            "physical_type": "VARCHAR",
+            "logical_type": "date",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 1,
+            "min": "2025-01-01",
+            "max": "2025-01-05",
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "status": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "d2": {
+        "row_count": 2,
+        "column_count": 3,
+        "duplicate_rows": 0,
+        "columns": {
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "category": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          },
+          "product_name": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "validation": {
+      "d1": {
+        "row_delta": 0,
+        "schema_unchanged": true,
+        "unresolved_issue_ids": [
+          "9ce83131c056fbfe"
+        ]
+      },
+      "d2": {
+        "row_delta": 0,
+        "schema_unchanged": true,
+        "unresolved_issue_ids": []
+      }
+    },
+    "chat_evaluation": [
+      {
+        "question": "List distinct region",
+        "status": "ok",
+        "plan": {
+          "intent": "distinct",
+          "dataset": "d1",
+          "join": null,
+          "filters": [],
+          "context": "replace",
+          "group_by": [],
+          "fields": [
+            "region"
+          ],
+          "metrics": [],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "Showing 2 result rows from 5 matching records.",
+          "preview": [
+            {
+              "region": "East"
+            },
+            {
+              "region": "West"
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.region"
+          ],
+          "filters": [],
+          "joins": [],
+          "operations": [
+            "distinct",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 5,
+          "preview_rows": 2,
+          "eligible_rows_by_metric": {},
+          "truncated": false,
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "List units where units >= 3 sort by units desc limit 2",
+        "status": "ok",
+        "plan": {
+          "intent": "select",
+          "dataset": "d1",
+          "join": null,
+          "filters": [
+            {
+              "field": "units",
+              "op": "gte",
+              "value": 3
+            }
+          ],
+          "context": "replace",
+          "group_by": [],
+          "fields": [
+            "units"
+          ],
+          "metrics": [],
+          "sort": [
+            {
+              "field": "units",
+              "direction": "desc"
+            }
+          ],
+          "limit": 2
+        },
+        "answer": {
+          "summary": "Showing 2 result rows from 4 matching records.",
+          "preview": [
+            {
+              "units": 10
+            },
+            {
+              "units": 6
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.units"
+          ],
+          "filters": [
+            {
+              "field": "units",
+              "op": "gte",
+              "value": 3
+            }
+          ],
+          "joins": [],
+          "operations": [
+            "filter",
+            "select",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 4,
+          "preview_rows": 2,
+          "eligible_rows_by_metric": {},
+          "truncated": true,
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Compare total revenue in East and West",
+        "status": "ok",
+        "plan": {
+          "intent": "compare",
+          "dataset": "d1",
+          "join": null,
+          "filters": [
+            {
+              "field": "region",
+              "op": "in",
+              "value": [
+                "East",
+                "West"
+              ]
+            }
+          ],
+          "context": "replace",
+          "group_by": [
+            "region"
+          ],
+          "fields": [],
+          "metrics": [
+            {
+              "op": "gross_sales",
+              "field": null,
+              "as_": "gross_sales"
+            }
+          ],
+          "sort": [
+            {
+              "field": "gross_sales",
+              "direction": "desc"
+            }
+          ],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "Showing 2 result rows from 5 matching records.",
+          "preview": [
+            {
+              "region": "East",
+              "gross_sales": "1000.0000"
+            },
+            {
+              "region": "West",
+              "gross_sales": "1000.0000"
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.region",
+            "orders.csv.unit_price",
+            "orders.csv.units"
+          ],
+          "filters": [
+            {
+              "field": "region",
+              "op": "in",
+              "value": [
+                "East",
+                "West"
+              ]
+            }
+          ],
+          "joins": [],
+          "operations": [
+            "filter",
+            "gross_sales",
+            "compare",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 5,
+          "preview_rows": 2,
+          "eligible_rows_by_metric": {
+            "gross_sales": 5
+          },
+          "truncated": false,
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Bottom 1 category by gross sales",
+        "status": "ok",
+        "plan": {
+          "intent": "aggregate",
+          "dataset": "d1",
+          "join": "d2",
+          "filters": [],
+          "context": "replace",
+          "group_by": [
+            "category"
+          ],
+          "fields": [],
+          "metrics": [
+            {
+              "op": "gross_sales",
+              "field": null,
+              "as_": "gross_sales"
+            }
+          ],
+          "sort": [
+            {
+              "field": "gross_sales",
+              "direction": "asc"
+            }
+          ],
+          "limit": 1
+        },
+        "answer": {
+          "summary": "category: Home · Gross sales: 500.0000",
+          "preview": [
+            {
+              "category": "Home",
+              "gross_sales": "500.0000"
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.sku",
+            "orders.csv.unit_price",
+            "orders.csv.units",
+            "products.csv.category",
+            "products.csv.sku"
+          ],
+          "filters": [],
+          "joins": [
+            {
+              "dataset": "d2",
+              "version": "0a6b4838673f66533fbd0614a83319e8de0d19cd57afb3d3e0bac04c099e0c0a",
+              "type": "left",
+              "cardinality": "many_to_one",
+              "left_key": "sku",
+              "right_key": "sku",
+              "fact_rows": 5,
+              "joined_rows": 5,
+              "unmatched_fact_rows": 0,
+              "missing_fact_keys": 0,
+              "scoped_unmatched_rows": 0
+            }
+          ],
+          "operations": [
+            "left_join",
+            "gross_sales",
+            "aggregate",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 5,
+          "preview_rows": 1,
+          "eligible_rows_by_metric": {
+            "gross_sales": 5
+          },
+          "truncated": true,
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Median units",
+        "status": "ok",
+        "plan": {
+          "intent": "aggregate",
+          "dataset": "d1",
+          "join": null,
+          "filters": [],
+          "context": "replace",
+          "group_by": [],
+          "fields": [],
+          "metrics": [
+            {
+              "op": "median",
+              "field": "units",
+              "as_": "median"
+            }
+          ],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "median: 4.0",
+          "preview": [
+            {
+              "median": 4.0
+            }
+          ]
+        },
+        "trace": {
+          "run_version": "776cd620b25a98ec97e77a41b4c7973590191ac351576827cd5d7f424a0b4cec",
+          "dataset": "d1",
+          "dataset_name": "orders.csv",
+          "dataset_version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "columns_used": [
+            "orders.csv.units"
+          ],
+          "filters": [],
+          "joins": [],
+          "operations": [
+            "median",
+            "aggregate",
+            "order",
+            "limit"
+          ],
+          "row_count_considered": 5,
+          "preview_rows": 1,
+          "eligible_rows_by_metric": {
+            "median": 5
+          },
+          "truncated": false,
+          "shortened_cells": 0
+        },
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Show raw revenue by category",
+        "status": "refuse",
+        "plan": {
+          "intent": "refuse",
+          "dataset": null,
+          "join": null,
+          "filters": [],
+          "context": "replace",
+          "group_by": [],
+          "fields": [],
+          "metrics": [],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "Chat uses the published cleaned version. Download the original artifact to inspect raw values.",
+          "preview": []
+        },
+        "trace": null,
+        "planner": "offline",
+        "fallback_reason": null
+      },
+      {
+        "question": "Use an unauthorized field",
+        "status": "rejected",
+        "plan": {
+          "intent": "select",
+          "dataset": "d1",
+          "join": null,
+          "filters": [],
+          "context": "replace",
+          "group_by": [],
+          "fields": [
+            "secret_field"
+          ],
+          "metrics": [],
+          "sort": [],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "A requested field is absent. Inspect the cleaned schema and field mappings.",
+          "preview": []
+        },
+        "trace": null,
+        "planner": "structured",
+        "fallback_reason": null,
+        "error": {
+          "code": "unknown_field",
+          "message": "A requested field is absent. Inspect the cleaned schema and field mappings."
+        }
+      }
+    ],
+    "artifacts": {
+      "d1": {
+        "original": "artifacts/query-operations/d1/original.csv",
+        "cleaned": "artifacts/query-operations/d1/cleaned.csv"
+      },
+      "d2": {
+        "original": "artifacts/query-operations/d2/original.csv",
+        "cleaned": "artifacts/query-operations/d2/cleaned.csv"
+      },
+      "report": "artifacts/query-operations/report.json"
+    }
+  },
+  {
+    "case_id": "isolated-malformed-file",
+    "status": "error",
+    "dataset": {},
+    "profile_before": {},
+    "issues": [],
+    "cleaning_plan": [],
+    "profile_after": {},
+    "validation": {},
+    "chat_evaluation": [],
+    "artifacts": {},
+    "error": {
+      "code": "malformed_csv",
+      "message": "Unexpected field count or NUL at CSV line 2."
+    }
+  },
+  {
+    "case_id": "duplicate-key",
+    "status": "ok",
+    "dataset": {
+      "version": "ce6466479270c1d92d34f61fadd48bdb136684961cc40f68484a7e49567d63bc",
+      "files": [
+        {
+          "id": "d1",
+          "name": "orders.csv",
+          "role": "orders",
+          "version": "4d80f83303a67f7f50ce1cdbf8fe0b3cd9627825d965af1c8003d023dbb6e1a6",
+          "sha256": "6e4cddc887dc0d8b808a87cdbc647c2ec8a94de406512cbf6cbe631f6b901523",
+          "mapping": {
+            "sku": "sku",
+            "region": "region",
+            "units": "units",
+            "returned_units": "returned_units",
+            "unit_price": "unit_price",
+            "order_date": "order_date",
+            "order_id": "order_id",
+            "line_id": "line_id"
+          }
+        },
+        {
+          "id": "d2",
+          "name": "products_duplicate.csv",
+          "role": "products",
+          "version": "849a9b8b7a422ae96351766a8e369e54e1cba9c8c8a41f0cb5686aeaf10ac689",
+          "sha256": "20324a350466a3d8c735eb649238a0a1072a8327ad4bff0836fd26341329f549",
+          "mapping": {
+            "sku": "sku",
+            "category": "category"
+          }
+        }
+      ]
+    },
+    "profile_before": {
+      "d1": {
+        "row_count": 5,
+        "column_count": 9,
+        "duplicate_rows": 0,
+        "columns": {
+          "line_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "order_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "region": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 1,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              1,
+              1
+            ]
+          },
+          "units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 2,
+            "max": 10,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "unit_price": {
+            "physical_type": "VARCHAR",
+            "logical_type": "money",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": "50.0000",
+            "max": "100.0000",
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "returned_units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 0,
+            "max": 2,
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "order_date": {
+            "physical_type": "VARCHAR",
+            "logical_type": "date",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 1,
+            "min": "2025-01-01",
+            "max": "2025-01-05",
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "status": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "d2": {
+        "row_count": 3,
+        "column_count": 3,
+        "duplicate_rows": 0,
+        "columns": {
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              2,
+              1
+            ]
+          },
+          "category": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              2,
+              1
+            ]
+          },
+          "product_name": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "issues": [
+      {
+        "dataset": "d1",
+        "id": "f9c1a4b2318d8ace",
+        "code": "outer_whitespace",
+        "field": "region",
+        "count": 1,
+        "status": "addressed"
+      },
+      {
+        "dataset": "d1",
+        "id": "9ce83131c056fbfe",
+        "code": "ambiguous_or_invalid_type",
+        "field": "order_date",
+        "count": 1,
+        "status": "unresolved"
+      },
+      {
+        "dataset": "d2",
+        "id": "d1aa6bfba12d5229",
+        "code": "duplicate_keys",
+        "field": "sku",
+        "count": 1,
+        "status": "unresolved"
+      }
+    ],
+    "cleaning_plan": [
+      {
+        "dataset": "d1",
+        "id": "647349dcfdb3cb50",
+        "fields": [
+          "region"
+        ],
+        "risk": "low",
+        "op": "trim_outer_whitespace",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 1,
+        "status": "applied"
+      },
+      {
+        "dataset": "d1",
+        "id": "0efe15992e74cf6a",
+        "fields": [
+          "unit_price"
+        ],
+        "risk": "medium",
+        "op": "normalize_declared_type",
+        "source": "code",
+        "reason": "Trim outer whitespace and normalize valid declared types. Preserve ambiguous values.",
+        "affected_rows": 5,
+        "status": "applied"
+      }
+    ],
+    "profile_after": {
+      "d1": {
+        "row_count": 5,
+        "column_count": 9,
+        "duplicate_rows": 0,
+        "columns": {
+          "line_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "order_id": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "region": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          },
+          "units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 2,
+            "max": 10,
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "unit_price": {
+            "physical_type": "VARCHAR",
+            "logical_type": "money",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": "50.0000",
+            "max": "100.0000",
+            "top_value_frequencies": [
+              3,
+              2
+            ]
+          },
+          "returned_units": {
+            "physical_type": "VARCHAR",
+            "logical_type": "quantity",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "min": 0,
+            "max": 2,
+            "top_value_frequencies": [
+              2,
+              2,
+              1
+            ]
+          },
+          "order_date": {
+            "physical_type": "VARCHAR",
+            "logical_type": "date",
+            "nulls": 0,
+            "distinct_estimate": 5,
+            "whitespace": 0,
+            "parse_failures": 1,
+            "min": "2025-01-01",
+            "max": "2025-01-05",
+            "top_value_frequencies": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "status": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              4,
+              1
+            ]
+          }
+        }
+      },
+      "d2": {
+        "row_count": 3,
+        "column_count": 3,
+        "duplicate_rows": 0,
+        "columns": {
+          "sku": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              2,
+              1
+            ]
+          },
+          "category": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 2,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              2,
+              1
+            ]
+          },
+          "product_name": {
+            "physical_type": "VARCHAR",
+            "logical_type": "text",
+            "nulls": 0,
+            "distinct_estimate": 3,
+            "whitespace": 0,
+            "parse_failures": 0,
+            "top_value_frequencies": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "validation": {
+      "d1": {
+        "row_delta": 0,
+        "schema_unchanged": true,
+        "unresolved_issue_ids": [
+          "9ce83131c056fbfe"
+        ]
+      },
+      "d2": {
+        "row_delta": 0,
+        "schema_unchanged": true,
+        "unresolved_issue_ids": [
+          "d1aa6bfba12d5229"
+        ]
+      }
+    },
+    "chat_evaluation": [
+      {
+        "question": "Show total revenue by category",
+        "status": "rejected",
+        "plan": {
+          "intent": "aggregate",
+          "dataset": "d1",
+          "join": "d2",
+          "filters": [],
+          "context": "replace",
+          "group_by": [
+            "category"
+          ],
+          "fields": [],
+          "metrics": [
+            {
+              "op": "gross_sales",
+              "field": null,
+              "as_": "gross_sales"
+            }
+          ],
+          "sort": [
+            {
+              "field": "gross_sales",
+              "direction": "desc"
+            }
+          ],
+          "limit": 10
+        },
+        "answer": {
+          "summary": "Product SKU must be unique and nonempty. Join rejected before execution.",
+          "preview": []
+        },
+        "trace": null,
+        "planner": "offline",
+        "fallback_reason": null,
+        "error": {
+          "code": "unsafe_join",
+          "message": "Product SKU must be unique and nonempty. Join rejected before execution."
+        }
+      }
+    ],
+    "artifacts": {
+      "d1": {
+        "original": "artifacts/duplicate-key/d1/original.csv",
+        "cleaned": "artifacts/duplicate-key/d1/cleaned.csv"
+      },
+      "d2": {
+        "original": "artifacts/duplicate-key/d2/original.csv",
+        "cleaned": "artifacts/duplicate-key/d2/cleaned.csv"
+      },
+      "report": "artifacts/duplicate-key/report.json"
+    }
+  }
+]

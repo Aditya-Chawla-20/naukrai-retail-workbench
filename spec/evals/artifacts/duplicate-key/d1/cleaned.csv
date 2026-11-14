@@ -1,0 +1,6 @@
+line_id,order_id,sku,region,units,unit_price,returned_units,order_date,status
+L1,O1,001,West,2,100.0000,1,2025-01-01,Completed
+L2,O2,001,West,3,100.0000,2,03/04/2025,Returned
+L3,O3,002,West,4,50.0000,0,2025-01-03,Completed
+L4,O4,002,West,6,50.0000,1,2025-01-04,Completed
+L5,O5,001,East,10,100.0000,0,2025-01-05,Completed

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Naukr.AI assessment submission and verification evidence.">
+<title>Naukr.AI · Submission and evidence</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--paper:#f7f3e8;--cream:#fffbef;--ink:#202b23;--muted:#515d50;--green:#153e32;--deep:#102f26;--lime:#d9ed9d;--line:#cbcdbb;--rust:#8b3f29;--serif:"Instrument Serif",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.63 var(--sans)}
+a{color:inherit;text-underline-offset:.22em}
+a:focus-visible,summary:focus-visible{outline:3px solid #a85c23;outline-offset:4px}
+::selection{background:var(--lime);color:var(--deep)}
+p,ul,ol{margin:.65rem 0 1rem}
+h1,h2,h3,h4{margin:0;line-height:1.04;text-wrap:balance}
+h1,h2,h3{font-family:var(--serif);font-weight:400}
+h1{font-size:clamp(3.25rem,6.7vw,6rem);letter-spacing:-.025em}
+h2{font-size:clamp(2.6rem,5.2vw,4.6rem);letter-spacing:-.02em}
+h3{font-size:2rem}
+h4{font-size:1rem}
+code,pre,.mono{font-family:var(--mono)}
+code{font-size:.88em;overflow-wrap:anywhere}
+pre{overflow:auto;padding:1.2rem;background:var(--deep);color:var(--cream);font-size:.85rem;line-height:1.6}
+.wrap{width:min(1260px,calc(100% - 9vw));margin:auto}
+.mast,.hero{background:var(--deep);color:var(--cream)}
+.mast .wrap{min-height:4.3rem;padding-block:.65rem;border-bottom:1px solid #547065;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.mast span{font-size:.88rem;font-weight:700;letter-spacing:.04em}
+.mast a{font-size:.82rem;color:var(--lime);flex-shrink:0}
+.hero .wrap{padding-block:clamp(3rem,8vw,7rem) 3.3rem;display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}
+.hero h1 em{color:var(--lime);font-weight:400}
+.dek{max-width:51ch;font-size:clamp(1.02rem,1.5vw,1.23rem);color:#e5ebdb;margin:1.25rem 0 1.5rem}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;color:#e5ebdb;padding:1rem 0 0;border-top:1px solid #547065;font-size:.85rem}
+.proof{margin:0;background:#1c4739;box-shadow:0 20px 44px #071c1570;border:1px solid #638076;padding:clamp(1rem,3vw,2rem);position:relative}
+.proof figcaption,.mini{font-size:.75rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.proof figcaption{color:var(--lime);margin-bottom:1rem}
+.proof blockquote{margin:0 0 1rem;font:clamp(1.85rem,3.1vw,2.65rem)/1.05 var(--serif)}
+.proof ol{margin:0;padding:0;list-style:none;border-top:1px solid #638076}
+.proof li{display:grid;grid-template-columns:5.3rem 1fr;gap:.5rem;padding:.6rem 0;border-bottom:1px solid #638076;font-size:.86rem}
+.proof li strong{color:var(--lime)}
+.proof .answer{font:2.1rem/1.12 var(--serif);color:var(--lime);margin:1.15rem 0 .3rem}
+.proof small{color:#e5ebdb}
+.shell{display:grid;grid-template-columns:12rem minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+nav{position:sticky;top:2rem;padding:3rem 0;align-self:start}
+nav a{display:block;width:fit-content;margin:.5rem 0;font-size:.9rem;color:var(--muted);text-decoration:none}
+nav a:hover{text-decoration:underline;color:var(--green)}
+nav .mini{color:var(--green);margin:0 0 .8rem}
+article{min-width:0}
+section{padding:3.7rem 0 3.9rem;border-bottom:1px solid var(--line);scroll-margin-top:1rem}
+section>p,section>ul,section>ol,.lead{max-width:72ch}
+.lead{color:var(--muted);font-size:1.12rem;margin:1rem 0 1.5rem}
+.verdict{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:1.6rem;padding:1.65rem;background:var(--lime);margin-top:1.6rem}
+.verdict strong{font:3rem/.95 var(--serif)}
+.verdict p{margin:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin:1.5rem 0}
+.split>div{border-top:1px solid var(--line);padding:1rem 0 0}
+.matrix{margin:1.4rem 0;border-top:1px solid var(--line)}
+.row{padding:1rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(8.5rem,1fr) minmax(0,2.4fr);gap:.9rem}
+.row dt{font-weight:700}
+.row dd{margin:0}
+.ref{font-size:.82rem;color:var(--muted)}
+.callout{background:var(--cream);border:1px solid var(--line);padding:1.15rem 1.4rem;margin:1.35rem 0}
+.callout p:last-child{margin-bottom:0}
+.flow{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);padding:0;margin:1.5rem 0;max-width:none}
+.flow li{padding:.7rem;border-block:1px solid var(--line);border-right:1px solid var(--line);font-size:.88rem}
+.flow li:first-child{border-left:1px solid var(--line)}
+.flow strong{display:block;color:var(--green);margin-bottom:.3rem}
+.steps{padding-left:1.4rem}
+.steps li{padding:.35rem .25rem}
+.steps li::marker{color:var(--green);font-weight:700}
+.subhead{margin-top:1.7rem}
+.transcript{margin:1.5rem 0;background:var(--green);color:var(--cream);padding:clamp(1rem,3vw,2rem)}
+.transcript p{max-width:69ch}
+.transcript .mini{color:var(--lime)}
+.transcript table{width:100%;border-collapse:collapse;font-size:.85rem;text-align:left}
+.transcript th,.transcript td{padding:.45rem .4rem;border-bottom:1px solid #6c887c}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;padding:.9rem 0}
+summary::marker{color:var(--rust)}
+details p{max-width:72ch;margin-top:0}
+.transcript details{border-color:#6c887c}
+.transcript summary::marker{color:var(--lime)}
+.faults{border-top:1px solid var(--line)}
+.faults details{scroll-margin-top:1rem}
+.faults p{padding-left:1.1rem}
+.fixture{width:min(100%,32rem);border-collapse:collapse;text-align:left;font-size:.85rem;margin-bottom:1rem}
+.fixture th,.fixture td{border-bottom:1px solid var(--line);padding:.35rem .2rem}
+.score{width:100%;border-collapse:collapse;margin:1.5rem 0;text-align:left}
+.score th,.score td{padding:.48rem .2rem;border-bottom:1px solid var(--line)}
+.score td:last-child,.score th:last-child{text-align:right;font-variant-numeric:tabular-nums;width:4rem}
+.score tbody th{font-weight:500}
+footer{background:var(--deep);color:var(--cream);padding:2.3rem 0}
+footer p{margin:.35rem 0}
+.skip{position:absolute;left:.5rem;top:.5rem;transform:translateY(-180%);padding:.6rem;background:var(--lime);color:var(--deep);z-index:1}
+.skip:focus{transform:none}
+@media(max-width:900px){.shell{grid-template-columns:9rem minmax(0,1fr);gap:2rem}.hero .wrap{gap:2rem}.flow{grid-template-columns:1fr 1fr}.flow li:nth-child(3){border-left:1px solid var(--line)}.flow li:nth-child(n+3){border-top:0}}
+@media(max-width:700px){.hero .wrap,.shell{display:block}.proof{margin-top:2rem}nav{position:static;padding:1.15rem 0;border-bottom:1px solid var(--line);display:flex;gap:.1rem .9rem;flex-wrap:wrap}nav .mini{flex-basis:100%;margin:0}nav a{margin:.2rem 0}section{padding:2.6rem 0}.verdict{grid-template-columns:1fr;gap:.7rem}.row{grid-template-columns:1fr;gap:.23rem}}
+@media(max-width:420px){.split{grid-template-columns:1fr;gap:.8rem}.transcript table{font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{nav,.skip{display:none}.wrap{width:100%}.shell{display:block}.hero .wrap{padding:1.4rem 0}.mast,.hero,footer,.transcript,.proof,pre{color:#111;background:white;box-shadow:none}.hero h1 em,.dek,.facts,.proof figcaption,.proof li strong,.proof .answer,.proof small,.transcript .mini,.mast a{color:#222}details:not([open])>*:not(summary){display:block}section{padding:1rem 0}h2,h3,summary{break-after:avoid}tr,.verdict,.row{break-inside:avoid}}
+
+.assets{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;padding:0;list-style:none}
+.assets a{display:inline-block;padding:.35rem 0;font-weight:650;color:var(--green)}
+.proof .answer{font-size:clamp(2.35rem,4.3vw,4.1rem)}
+video{display:block;width:100%;background:var(--deep);margin:1rem 0}
+details{padding-inline:.15rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#read">Skip to evidence</a>
+<header class="mast"><div class="wrap"><span>Naukr.AI · DQ-AI-CHAT-03</span><a href="https://github.com/Aditya-Chawla-20/naukrai-retail-workbench">GitHub repository</a></div></header>
+<div class="hero"><div class="wrap">
+  <div>
+    <h1>Retail Data<br><em>Workbench.</em></h1>
+    <p class="dek">Assessment submission and verification record. Follow a messy upload through deterministic cleaning, a guarded retail join, and a chat answer you can reproduce.</p>
+    <div class="facts"><span>AI Engineering</span><span>10 tests passed</span><span>Credential-free evaluator</span></div>
+  </div>
+  <figure class="proof">
+    <figcaption>Verified example · West region</figcaption>
+    <blockquote>Which category had the highest return rate?</blockquote>
+    <p class="answer">Apparel · 60%</p>
+    <ol>
+      <li><strong>Inputs</strong><span>Orders and product catalog</span></li>
+      <li><strong>Scope</strong><span>4 eligible West order lines</span></li>
+      <li><strong>Join</strong><span>Orders → Products, many to one</span></li>
+      <li><strong>Proof</strong><span>3 returned units / 5 sold</span></li>
+    </ol>
+    <small>Same result through offline evaluation and live Nemotron planning.</small>
+  </figure>
+</div></div>
+<div class="wrap shell">
+<nav aria-label="Evidence chapters"><p class="mini">On this page</p>
+<a href="#brief">Assignment brief</a><a href="#build">What was built</a><a href="#outputs">Outputs by step</a>
+<a href="#evals">Verification results</a><a href="#walkthrough">Walkthrough</a><a href="#handoff">Review and handoff</a>
+</nav>
+<main id="read"><article>
+<section id="brief">
+  <h2>What the assignment asked</h2>
+  <p class="lead">Build a production-minded Python API that cleans retail CSVs and answers grounded questions. The code must validate, execute and verify each proposed plan. The brief gives four calendar days, estimates 12–18 focused hours and permits AI tools.</p>
+  <dl class="matrix">
+    <div class="row"><dt>Data quality · p. 2</dt><dd>Persist runs and original/cleaned CSVs. Profile schema, shape, nulls, duplicates, cardinality, parse failures and distributions before and after. Plan changes with stable IDs, reasons, affected fields, risk, source and status. Validate row/schema deltas, unresolved issues and rerun stability.</dd></div>
+    <div class="row"><dt>Retail intelligence · p. 2</dt><dd>Choose at least two of normalization, safe relationships, auditable scoring/recommendations, and analytics. This submission implements safe joins and sales analytics.</dd></div>
+    <div class="row"><dt>Chat · p. 3</dt><dd>Support filters, sorting, grouping, aggregates, comparisons, rankings, distinct values and statistics. Persist follow-ups, validate joins and return versioned evidence. Handle ambiguity, missing data, injection, invalid plans, model failure and raw/cleaned conflicts.</dd></div>
+    <div class="row"><dt>Evaluation · p. 4</dt><dd>One headless CLI must reuse production code, report independent failures and produce reproducible machine-readable results. Enforce file and query limits, isolate workspaces, minimize hosted data exposure and include substantive tests.</dd></div>
+    <div class="row"><dt>Track and submission · p. 5</dt><dd>Choose one of Full Stack, Backend/Data Engineering, ML/Data Science or AI Engineering. Deliver GitHub history, clean-clone setup, README, fixtures, tests, env template and a 3–5 minute walkthrough.</dd></div>
+  </dl>
+  <details><summary>The 100-point rubric</summary>
+  <table class="score"><thead><tr><th scope="col">Area</th><th scope="col">Points</th></tr></thead><tbody>
+  <tr><th scope="row">Data profiling and cleaning correctness</th><td>18</td></tr><tr><th scope="row">Retail-domain intelligence</th><td>14</td></tr><tr><th scope="row">Chat grounding and multi-turn reasoning</th><td>20</td></tr><tr><th scope="row">Safe execution and AI engineering</th><td>12</td></tr><tr><th scope="row">Batch evaluator and reliability</th><td>10</td></tr><tr><th scope="row">Architecture and code quality</th><td>10</td></tr><tr><th scope="row">Security, privacy and isolation</th><td>6</td></tr><tr><th scope="row">Automated tests</th><td>5</td></tr><tr><th scope="row">README and technical reasoning</th><td>5</td></tr></tbody></table>
+  </details>
+  <p class="ref">Source: Naukr.AI assessment, DQ-AI-CHAT-03, pp. 1–5. <a href="spec/requirements.md">Complete requirement-to-evidence matrix</a></p>
+</section>
+<section id="build">
+  <h2>What we built and why</h2>
+  <p class="lead">One FastAPI application and one shared Python service. DuckDB handles data work. SQLite holds the run and conversation metadata. Ordinary files hold the downloadable evidence.</p>
+  <ol class="flow" aria-label="Pipeline flow"><li><strong>Ingest</strong>Validate CSVs and hash original bytes.</li><li><strong>Clean</strong>Profile, plan, apply and reconcile.</li><li><strong>Query</strong>Validate intent, scope and join.</li><li><strong>Prove</strong>Execute and persist the evidence.</li></ol>
+  <dl class="matrix">
+    <div class="row"><dt>Preserve before changing</dt><dd>Stage fields as text to keep SKU <code>001</code> intact. Normalize agreed formats and leave the ambiguous date <code>03/04/2025</code> unresolved. Retain duplicate rows and flag conflicts. Verify row and schema deltas before publication.</dd></div>
+    <div class="row"><dt>Guard the math</dt><dd>Require a unique catalog SKU before joining, then reconcile fact row counts and count missing keys. Calculate gross sales, average order value and unit return rate with documented eligibility. Show components and coverage.</dd></div>
+    <div class="row"><dt>Use the model for planning</dt><dd>Nemotron proposes a typed plan. The server owns workspace access, data version, legal joins, filters, limits and the calculation. Explicit region commands update scope locally. Hosted planning gets the question and schema metadata. CSV cells stay local.</dd></div>
+    <div class="row"><dt>Share the executable path</dt><dd>The browser and reviewer CLI call the same service. For evaluation the planner is deterministic or receives an injected test plan. The executor, cleaning ledger and evidence formatter stay shared.</dd></div>
+  </dl>
+  <p>Single-node operation, one supported join, and a limited offline grammar keep the implementation small. The app documents limits on file size, rows, query time, and concurrency. Broader retail relationships, fuzzy category merging and production identity are outside this submission’s chosen scope.</p>
+  <ul class="assets"><li><a href="spec/approach.md">Design decisions</a></li><li><a href="README.md">Setup and trade-offs</a></li><li><a href="spec/log.md">Implementation log</a></li></ul>
+</section>
+<section id="outputs">
+  <h2>From upload to answer</h2>
+  <p class="lead">These are saved outputs from the actual run on the checked-in synthetic fixtures. The underlying JSON includes full profiles, issue IDs, cleaning steps, schema validation, plans and traces.</p>
+  <dl class="matrix">
+    <div class="row"><dt>Intake and profiling</dt><dd>5 order lines and 2 catalog rows. Original bytes were preserved. Inspect the <a href="spec/evals/artifacts/west-retail/d1/original.csv">original orders</a> and <a href="spec/evals/artifacts/west-retail/d2/original.csv">original catalog</a>.</dd></div>
+    <div class="row"><dt>Cleaning and validation</dt><dd>Blank/outer whitespace and declared types are normalized, with zero row loss and unchanged headers. The ambiguous date remains visible. Open the <a href="spec/evals/artifacts/west-retail/d1/cleaned.csv">cleaned orders</a>, <a href="spec/evals/artifacts/west-retail/d2/cleaned.csv">cleaned catalog</a> and <a href="spec/evals/artifacts/west-retail/report.json">full before/after report and cleaning ledger</a>.</dd></div>
+    <div class="row"><dt>Retail query</dt><dd>West contains four lines. Apparel returned 3 of 5 units. The later status question uses <code>count</code> and returns Completed with 3. Inspect <a href="spec/evals/live-api.json">every live question, plan, answer and trace</a>.</dd></div>
+    <div class="row"><dt>Failure and recovery</dt><dd>The malformed CSV returns <code>malformed_csv</code> at record 2. The next case executes and rejects a duplicate-product join with <code>unsafe_join</code>. The <a href="spec/evals/batch-results.json">batch JSON</a> includes all failures and artifact paths.</dd></div>
+  </dl>
+</section>
+<section id="evals">
+  <h2>Verification</h2>
+  <p class="lead">The clean clone installed from the lockfile and ran the tests and credential-free evaluator. Four batch cases exercised 13 chat turns.</p>
+  <table class="score"><thead><tr><th scope="col">Check</th><th scope="col">Result</th></tr></thead><tbody>
+  <tr><th scope="row">Automated tests, including 100,001 rows</th><td>10 passed</td></tr>
+  <tr><th scope="row">Offline analytical and safety cases</th><td>3 passed</td></tr>
+  <tr><th scope="row">Malformed input between successful cases</th><td>Expected error</td></tr>
+  <tr><th scope="row">Repeated evaluation and artifact bytes</th><td>Matched</td></tr>
+  <tr><th scope="row">Live plans, exact answers, history and isolation</th><td>Passed</td></tr>
+  </tbody></table>
+  <p>The operations case checks distinct regions, a typed filter and descending sort, East/West comparisons, the bottom category, median units, raw-version refusal, and unknown fields. The automated suite also exercises missing join keys, all-null columns, idempotency, injection, invalid model output and retry.</p>
+  <ul class="assets"><li><a href="cases.json">Eval inputs and assertions</a></li><li><a href="spec/evals.md">Eval notes</a></li><li><a href="spec/evals/clean-clone.txt">Clean-clone terminal output</a></li><li><a href="spec/evals/batch-results.json">Full batch JSON</a></li><li><a href="spec/evals/live-api.json">Live API JSON</a></li></ul>
+</section>
+<section id="walkthrough">
+  <h2>Walkthrough</h2>
+  <p>3:37 of captured application output with synthesized narration. It shows cleaning, an ambiguous question, the SKU join, multi-turn evidence and recovery from malformed input.</p>
+  <video controls preload="metadata" src="walkthrough.mp4" aria-label="Retail Data Workbench walkthrough"><a href="walkthrough.mp4">Open walkthrough</a></video>
+</section>
+<section id="handoff">
+  <h2>Review and handoff</h2>
+  <pre tabindex="0"><code>uv sync --locked
+source .venv/bin/activate
+python -m app.evaluate --input cases.json --output results.json --artifacts-dir ./evaluation_output</code></pre>
+  <p>Run the evaluator, inspect a cleaned artifact, verify the West result from its trace, then check the malformed case and the successful evaluation after it. The documented case format works with the published examples. Hidden-grader execution remains with the reviewer.</p>
+  <p>Submission material is in the public repository. Delivery to the hiring channel is pending the destination.</p>
+</section>
+</article></main>
+</div>
+<footer><div class="wrap"><p><a href="spec/log.md">Implementation log</a> · <a href="#read">Back to the report</a></p><p>Assessment evidence generated from synthetic retail fixtures.</p></div></footer>
+</body></html>

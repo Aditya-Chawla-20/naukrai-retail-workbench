@@ -1,0 +1,46 @@
+Clean clone verification · application revision d9715ab
+Using CPython 3.11.15
+Creating virtual environment at: .venv
+Resolved 27 packages in 3ms
+Installed 25 packages in 58ms
+ + annotated-doc==0.0.6
+ + annotated-types==0.8.0
+ + anyio==4.16.0
+ + certifi==2026.10.23
+ + click==8.5.1
+ + duckdb==2.0.0
+ + fastapi==0.162.7
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + iniconfig==2.3.1
+ + opentelemetry-api==1.45.2
+ + packaging==26.3
+ + pluggy==1.7.0
+ + pydantic==2.14.3
+ + pydantic-core==2.50.4
+ + pygments==2.21.0
+ + pytest==9.2.0
+ + python-dotenv==1.2.4
+ + python-multipart==0.0.33
+ + starlette==1.10.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.5
+ + uvicorn==0.54.0
+Python 3.11.15
+..........                                                               [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.11/site-packages/fastapi/testclient.py:1
+  /private/tmp/naukrai-final.xsvUwT/repo/.venv/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+10 passed, 1 warning in 4.61s
+Wrote 4 case results to results.json. 3 succeeded.
+Wrote 4 case results to repeated.json. 3 succeeded.
+stream|codec_name=h264|width=1280|height=800
+stream|codec_name=aac
+format|duration=216.629313
+Walkthrough decoded successfully.
+Repeat verification: all non-path fields matched and all published artifact bytes matched.
