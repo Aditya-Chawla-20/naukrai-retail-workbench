@@ -44,3 +44,6 @@ stream|codec_name=aac
 format|duration=216.629313
 Walkthrough decoded successfully.
 Repeat verification: all non-path fields matched and all published artifact bytes matched.
+Anonymous GitHub clone revision: caf1c14
+Wrote 4 case results to results.json. 3 succeeded.
+Public clean clone reproduced all four results and every published CSV/report byte.

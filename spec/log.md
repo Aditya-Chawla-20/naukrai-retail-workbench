@@ -16,3 +16,4 @@
 | Live final smoke | Recorded exact West and Completed answers, targeted clarification, persisted history and separate-workspace denial. Saved planner, plan and trace with no credentials. |
 | Assemble submission | Built the browser-readable submission report, linked the complete outputs and embedded the verified walkthrough. Checked keyboard interaction, file links and video metadata at 320, 390, 768 and 1440 pixels. |
 | Handoff scope | The owner chose a public GitHub repository. The hiring-channel destination will be supplied later. The original assessment PDF stays in the local workspace. |
+| Public GitHub verification | Published the repository and cloned anonymously at `caf1c14`. The key-free evaluator reproduced all four case results and every archived CSV/report byte. |
