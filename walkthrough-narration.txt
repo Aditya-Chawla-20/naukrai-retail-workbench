@@ -1,0 +1,27 @@
+01 · Introduction
+
+Let's walk through the Retail Data Workbench, built for the A I Engineering track. The browser, API, and batch evaluator use one Python service. I'll load two sample files, an order-line table and a product catalog. Each run preserves the original bytes under a generated identifier. A cleaned version appears only after the service verifies the row count and headers.
+
+02 · Profile and clean
+
+The orders file starts with five rows. The workbench profiles the original and builds the cleaning plan before applying it. Each step includes its fields, reason, risk, and number of affected rows. In this case, the cleaner trims the region, normalizes declared prices, and keeps S K U zero zero one as text. A date that might mean March fourth or April third remains in the dataset and is listed as an unresolved parse failure. Both original and cleaned files can be downloaded.
+
+03 · Clarify an ambiguous question
+
+Next I ask which store is best. Best could mean sales, return rate, or another measure. The assistant asks for a metric or an appropriate column. It leaves the conversation scope alone while the question is unresolved. For the next example, I'll start a fresh conversation with a precise scope.
+
+04 · Ask a retail follow-up
+
+I ask to consider only stores in the West. The workbench reports four eligible order lines and saves that filter. Then I ask which categories had the highest return rate among those. The plan carries forward West and joins order lines to the product catalog by S K U. The service checks that the catalog is unique on that key before joining. And here's the answer. Apparel, at sixty percent. That's three units returned, out of five sold. The evidence panel shows the version, filter, join cardinality, row count, and operation. The numerator and denominator are in the full trace.
+
+05 · Verify the count and history
+
+For another follow-up, I ask which status has the most records. The service groups by status and counts rows. Completed has three. The conversation reloads with both the answers and their evidence. Duck Dee Bee executes an allow-listed, parameterized plan. The language model, when enabled, only proposes that plan. It never sees CSV cells or computes the final number. This run uses the credential-free planner.
+
+06 · Malformed input
+
+Now I upload a CSV whose data row has too many fields. The run fails with the affected line number. The failed run has no published cleaned artifact, and previous runs are still in history. That failure path also appears in the headless evaluator between two successful cases, so a reviewer can verify case isolation without the browser.
+
+07 · Recover and evaluate
+
+Finally I reload the valid sample and ask for revenue by category. The service gives apparel fifteen hundred and home five hundred across the full dataset. The repository includes a locked setup, the offline sample evaluator, and tests for exact answers, unsafe joins, bad model output, and a one hundred thousand row fixture. The optional Nvidia planner connects through the same validated execution path. This walkthrough used the browser and local test data, with no hosted model credentials.
