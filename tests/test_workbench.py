@@ -92,6 +92,21 @@ def test_fanout_and_unsafe_plan(data):
         Plan(intent="select", dataset="d1", fields=["sku"], limit=100_000)
 
 
+def test_missing_keys_and_all_null_fields(data):
+    workbench, _ = data
+    source = workbench.root / "orphans.csv"
+    source.write_text("line_id,sku,units,unit_price,returned_units,note\n"
+                      "L1,,2,10,0,\nL2,999,1,10,0,\n", encoding="utf-8")
+    run = workbench.ingest("alice", [Input(source, "orders.csv"), sample("products.csv")])
+    assert run["datasets"][0]["profile_after"]["columns"]["note"]["nulls"] == 2
+    turn = ask(workbench, "alice", run["run_id"], "Show total revenue by category")
+    assert turn["status"] == "ok"
+    assert turn["answer"]["preview"] == [{"category": None, "gross_sales": "30.0000"}]
+    join = turn["trace"]["joins"][0]
+    assert join["fact_rows"] == join["joined_rows"] == join["unmatched_fact_rows"] == 2
+    assert join["missing_fact_keys"] == 1
+
+
 def test_upload_and_isolation(tmp_path, monkeypatch):
     monkeypatch.delenv("NVIDIA_API_KEY", raising=False)
     service = create_app(tmp_path, access_token="")
@@ -195,8 +210,8 @@ def test_batch_contract_and_exact_answer(tmp_path):
     subprocess.run([sys.executable, "-m", "app.evaluate", "--input", str(ROOT / "cases.json"),
                     "--output", str(output), "--artifacts-dir", str(tmp_path / "out")], check=True, cwd=ROOT)
     result = json.loads(output.read_text())
-    assert [case["status"] for case in result] == ["ok", "error", "ok"]
-    assert result[1]["error"]["code"] == "malformed_csv"
+    assert [case["status"] for case in result] == ["ok", "ok", "error", "ok"]
+    assert result[2]["error"]["code"] == "malformed_csv"
     assert Path(result[0]["artifacts"]["d1"]["cleaned"]).exists()
     assert result[0]["chat_evaluation"][1]["answer"]["preview"][0]["return_rate"] == .6
 

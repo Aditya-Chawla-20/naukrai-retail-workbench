@@ -11,6 +11,19 @@
         {"question": "Which store is best?", "expected": {"status": "clarify"}}
       ]
     },
+    {
+      "id": "query-operations",
+      "datasets": ["samples/orders.csv", "samples/products.csv"],
+      "chat_questions": [
+        {"question": "List distinct region", "expected": {"status": "ok", "preview": [{"region": "East"}, {"region": "West"}]}},
+        {"question": "List units where units >= 3 sort by units desc limit 2", "expected": {"status": "ok", "preview": [{"units": 10}, {"units": 6}], "row_count_considered": 4}},
+        {"question": "Compare total revenue in East and West", "expected": {"status": "ok", "preview": [{"region": "East", "gross_sales": "1000.0000"}, {"region": "West", "gross_sales": "1000.0000"}]}},
+        {"question": "Bottom 1 category by gross sales", "expected": {"status": "ok", "preview": [{"category": "Home", "gross_sales": "500.0000"}]}},
+        {"question": "Median units", "expected": {"status": "ok", "preview": [{"median": 4.0}], "operation": "median"}},
+        {"question": "Show raw revenue by category", "expected": {"status": "refuse"}},
+        {"question": "Use an unauthorized field", "plan": {"intent": "select", "dataset": "d1", "fields": ["secret_field"]}, "expected": {"status": "rejected", "error_code": "unknown_field"}}
+      ]
+    },
     {"id": "isolated-malformed-file", "datasets": ["samples/malformed.csv"]},
     {
       "id": "duplicate-key",

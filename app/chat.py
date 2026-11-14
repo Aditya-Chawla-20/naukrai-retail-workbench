@@ -52,7 +52,7 @@ def offline(question, run, prior):
     followup = bool(re.match(r"^(among those|of those|for those|now|only|what about|and for|how about)\b", lower))
     scope_only = bool(re.match(r"^(now\s+)?only\b", lower))
     table = (explicit or ([previous] if followup and previous else []) or (orders if len(orders) == 1 else []) or candidates[:1])[0]
-    if (not explicit and not previous and not orders and len(candidates) > 1) or (
+    if (not explicit and not (followup and previous) and not orders and len(candidates) > 1) or (
         len(orders) > 1 and not explicit and not (followup and previous)
     ):
         return Plan(intent="clarify")
@@ -100,10 +100,10 @@ def offline(question, run, prior):
         filters.append(Filter(field=field, op={"=":"eq","!=":"ne",">":"gt","<":"lt",">=":"gte","<=":"lte"}[match[2]], value=value))
     common = {"dataset": table["id"], "join": joins, "filters": filters,
               "context": "extend" if followup else "replace"}
-    if scope_only and filters and not retail:
-        return Plan(intent="scope", **common)
     if re.search(r"\b(weather|competit(?:or|ion)|forecast|why|predict|caused)\b", lower):
         return Plan(intent="refuse")
+    if scope_only and filters and not retail:
+        return Plan(intent="scope", **common)
     if re.search(r"\b(best|performance)\b", lower) and not retail:
         return Plan(intent="clarify")
     n = re.search(r"\b(?:top|bottom|limit)\s+(\d{1,8})\b", lower)

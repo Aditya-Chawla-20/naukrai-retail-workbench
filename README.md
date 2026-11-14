@@ -29,7 +29,7 @@ source .venv/bin/activate
 python -m app.evaluate --input cases.json --output results.json --artifacts-dir ./evaluation_output
 ```
 
-The included batch has two successful cases and an intentional malformed CSV error between them. A bad case does not stop subsequent cases. Inspect each case status and per-turn assertions. A zero command exit code means the result document was written. An invalid top-level input or an output I/O failure returns code 2.
+The included batch has three successful cases and one intentional malformed CSV error. A bad case does not stop subsequent cases. Inspect each case status and per-turn assertions. A zero command exit code means the result document was written. An invalid top-level input or an output I/O failure returns code 2.
 
 The PDF leaves the exact input shape open. Our input is an array of case objects or `{"cases": [...]}`. Each case uses an optional string `id`, a `datasets` list of CSV paths or objects with `path`, optional `name`, `role`, `mapping`, and `encoding`, and optional `chat_questions`. Paths are relative to the input JSON. The local evaluator trusts the invoking operator to choose input paths. It never uses case IDs as filesystem paths. A one-file case can also use `dataset_path` or `csv_path`. A dataset map from role to path is accepted.
 

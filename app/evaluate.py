@@ -1,8 +1,10 @@
 """Credential-free batch runner. Each case uses the production service."""
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from pydantic import ValidationError
 
@@ -107,9 +109,13 @@ def main():
         service = Workbench(args.artifacts_dir)
         results = [evaluate_case(c, i, service, args.input.resolve().parent) for i, c in enumerate(cases, 1)]
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        temporary = args.output.with_name(args.output.name + ".tmp")
-        temporary.write_text(dump(results) + "\n", encoding="utf-8")
-        temporary.replace(args.output)
+        with NamedTemporaryFile(mode="w", encoding="utf-8", dir=args.output.parent, delete=False) as temporary:
+            try:
+                temporary.write(dump(results) + "\n")
+                temporary.close()
+                os.replace(temporary.name, args.output)
+            finally:
+                Path(temporary.name).unlink(missing_ok=True)
         print(f"Wrote {len(results)} case results to {args.output}. "
               f"{sum(r['status'] == 'ok' for r in results)} succeeded.")
         return 0
