@@ -23,7 +23,7 @@ The mandatory evaluator is credential-free. See [cases.json](../cases.json) for 
 - **Offline:** 4 cases, 13 chat turns, 3 successful case outcomes and 1 intentional ingestion failure. Two independent runs matched after removing instance-specific artifact paths. All published original, cleaned and report bytes matched. The saved snapshot rewrites only artifact paths to portable paths relative to the result file.
 - **Automated:** 10 tests passed. They cover profiles, deterministic cleaning and idempotency, safe join/fan-out and missing keys, all-null and malformed/empty files, typed filtering and unsafe plans, ownership, exact follow-ups, injection, mocked model failure/retry, batch continuation and a 100,001-row fixture. Starlette emits one test-client deprecation warning.
 - **Live NVIDIA:** Synthetic orders and products only. Nemotron 3.5 Lightning produced both exact analytic answers and the clarification without fallback. The explicit scope command ran locally. The session persisted all four turns and a separate cookie could not access the run. This is a targeted smoke test.
-- **Walkthrough:** 216.584 seconds (3:37), 1280×800 H.264 with AAC. Decoded end to end with FFmpeg. Captured browser workflow and re-narrated with the Andrew male neural voice.
+- **Walkthrough:** 216.628 seconds (3:37), 1280×800 H.264 with AAC. Decoded end to end with FFmpeg. Captured browser workflow and re-narrated with the Andrew male neural voice.
 - **Hidden grader:** pending reviewer execution. The assessment gives the output schema and CLI, and supplies no official input fixture in the provided files.
 
 ## Inspect the outputs
