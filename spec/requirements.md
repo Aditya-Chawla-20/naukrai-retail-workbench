@@ -13,7 +13,7 @@ Source: Naukr.AI, *AI Retail Data & Conversational Intelligence Workbench*, DQ-A
 | p. 4 · Validation, privacy and bounded work | Type/size/path checks, cookie-scoped storage, allow-listed operators/joins, query limit and interrupt, no CSV values in hosted planning requests | Isolation, adversarial plans and other automated tests |
 | p. 5 · **AI Engineering** specialization | NVIDIA planner → typed plan validation → application tool execution; local fallback, retries and exact-answer eval | Model-free eval and credentialed smoke report |
 | p. 5 · Clean clone, meaningful commits, README, sample data, tests, env template | Locked Python project with Git history | Clean-clone log and README |
-| p. 5 · 3–5 minute walkthrough | 3:37 captured browser walkthrough with synthesized narration | [Walkthrough](../walkthrough.mp4) |
+| p. 5 · 3–5 minute walkthrough | 3:00 captured browser walkthrough narrated with the owner's Aditya New profile via Qwen3-TTS 1.7B, edited in Remotion | [Walkthrough](../walkthrough.mp4) |
 
 The optional retail alternatives are product/category normalization and scoring/recommendations. Case variants are reported as data-quality issues. The submission chooses AI Engineering, one of the four offered specializations. The others are Full Stack, Backend/Data Engineering, and ML/Data Science.
 
